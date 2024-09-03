@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres_container  # Name of the container
+    environment:
+      POSTGRES_USER: myUser  # Replace with your desired username
+      POSTGRES_PASSWORD: myPassword  # Replace with your desired password
+      POSTGRES_DB: TransactionalDB  # Replace with the name of the database you want to create
+    ports:
+      - "5432:5432"  # Map the container's port 5432 to the host's port 5432
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"  # Bind mount to store data in the project folder
+
+#    volumes:
+#      - pgdata:/var/lib/postgresql/data  # Persist PostgreSQL data in a Docker volume
+#volumes:
+#  pgdata:
+#    driver: local  # Use the local driver for the volume
+#    # (usually under /var/lib/docker/volumes on Linux).
+#    # C:\ProgramData\Docker\volumes\.
